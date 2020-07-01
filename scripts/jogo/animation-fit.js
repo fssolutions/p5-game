@@ -5,16 +5,32 @@ class AnimationFit {
     this.scale = scale;
     this.x = x;
     this.variacaoY = variacaoY;
-    this.y = height - this.altura - this.variacaoY;
+    this.y = height - matriz[0][2] - this.variacaoY;
 
     this.frameAtual = 0;
     this.frameRate = frameRate;
     this.autoAnime = autoAnime;
   }
 
-  exibe() {
+  getPoint() {
     let fa = Math.floor(this.frameAtual);
-    image(this.imagem, this.x, this.y, this.matriz[fa][2] * this.scale, this.matriz[fa][3] * this.scale, this.matriz[fa][0], this.matriz[fa][1], this.matriz[fa][2], this.matriz[fa][3]);
+    return {
+      point: [
+        this.matriz[fa][0],
+        this.matriz[fa][1],
+        this.matriz[fa][2],
+        this.matriz[fa][3],
+      ],
+        realSize: [
+          this.matriz[fa][2] * this.scale,
+          this.matriz[fa][3] * this.scale,
+        ]
+    }
+  }
+
+  exibe() {
+    let points = this.getPoint();
+    image(this.imagem, this.x, this.y, points.realSize[0], points.realSize[1], points.point[0], points.point[1], points.point[2], points.point[3]);
 
     if (this.autoAnime) {
       this.anima();

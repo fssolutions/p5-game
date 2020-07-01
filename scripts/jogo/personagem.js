@@ -1,13 +1,14 @@
 class Personagem extends AnimationFit {
-  constructor(matriz, imagem, variacaoX, variacaoY, scale) {
+  constructor(matriz, imagem, variacaoX, variacaoY, scale = 1) {
     super(matriz, imagem, variacaoX, variacaoY, scale, .5, false);
     this.variacaoY = variacaoY;
     this.variacaoX = variacaoX;
     this.xInicial = this.variacaoX;
-    this.yInicial = height - this.altura - this.variacaoY;
+    this.yInicial = height - matriz[0][3] * scale - this.variacaoY;
     this.y = this.yInicial;
     this.x = this.variacaoX;
-
+    
+    this.largura = matriz[0][2] * scale
     this.velocidadeDoPulo = 0;
     this.gravidade = 6;
     this.alturaDoPulo = -50
@@ -51,17 +52,16 @@ class Personagem extends AnimationFit {
     if (this.invencivel) {
       return false
     }
-
-    const precisao = .7
+    let point = this.getPoint().realSize;
     const colisao = collideRectRect(
       this.x,
       this.y,
-      this.largura * precisao,
-      this.altura * precisao,
+      point[0],
+      point[1],
       inimigo.x,
       inimigo.y,
-      inimigo.largura * precisao,
-      inimigo.altura * precisao
+      inimigo.largura,
+      inimigo.altura
     );
 
     return colisao;
