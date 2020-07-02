@@ -69,7 +69,7 @@ class Level1 extends Level {
       });
     }
 
-    // somDoJogo.loop();
+    somDoJogo.loop();
   }
 
   keyPressed(key) {
