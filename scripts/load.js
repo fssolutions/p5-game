@@ -3,16 +3,15 @@ function preload() {
   image_logo = loadImage('assets/image/logo.png')
   image_relva = loadImage('assets/image/relva.png')
   imagemPersonagem = loadImage('assets/image/player.png');
-  // imagemCenario = loadImage('imagens/cenario/floresta.png');
-  // imagemGameOver = loadImage('imagens/assets/game-over.png');
-  // imagemInimigo = loadImage('imagens/inimigos/gotinha.png');
-  // imagemInimigoVoador = loadImage('imagens/inimigos/gotinha-voadora.png');
-  // imagemInimigoGrande = loadImage('imagens/inimigos/troll.png');
-  // imagemTelaInicial = loadImage('imagens/cenario/telaInicial.png');
-  // imagemVida = loadImage('imagens/assets/heart.png');
-  // fita = loadJSON('fita/fita.json')
+  fita = loadJSON('fita/fita.json')
+  imagemGameOver = loadImage('assets/image/game_over.png');
+  imagemControle = loadImage('assets/image/control.png');
   // somDoJogo = loadSound('sons/trilha_jogo.mp3');
   // somDoPulo = loadSound('sons/somPulo.mp3');
+  somGameOver = loadSound('assets/sounds/game_over.mp3');
+  somDoJogo = loadSound('assets/sounds/level1.mp3');
+  somKnifesharpener = loadSound('assets/sounds/qubodup-megaswosh2.wav');
+  somMiss = loadSound('assets/sounds/2.wav');
 }
 
 const Y_AXIS = 1;

@@ -13,7 +13,7 @@ class AnimationFit {
   }
 
   getPoint() {
-    let fa = Math.floor(this.frameAtual);
+    let fa = parseInt(this.frameAtual);
     return {
       point: [
         this.matriz[fa][0],

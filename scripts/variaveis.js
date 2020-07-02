@@ -10,7 +10,7 @@ let fonteTelaInicial;
 let somDoPulo;
 let fita
 
-let currentScene = 'level1';
+let currentScene = 'credits';
 let scenes;
 let credits;
 let vida

@@ -43,7 +43,8 @@ class Personagem extends AnimationFit {
 
   tornarInvencivel() {
     this.invencivel = true
-    setTimeout(() => {
+    clearTimeout(this.stti);
+    this.stti = setTimeout(() => {
       this.invencivel = false
     }, 1000)
   }
@@ -52,12 +53,12 @@ class Personagem extends AnimationFit {
     if (this.invencivel) {
       return false
     }
-    let point = this.getPoint().realSize;
+    let point = this.getPoint().point;
     const colisao = collideRectRect(
       this.x,
       this.y,
-      point[0],
-      point[1],
+      point[2],
+      point[3],
       inimigo.x,
       inimigo.y,
       inimigo.largura,
@@ -85,8 +86,15 @@ class Personagem extends AnimationFit {
     }
   }
 
+  isHited() {
+    return this.to != null;
+  }
+
   hit() {
     this.setAutoAnime(true);
+    somKnifesharpener.play();
+    setTimeout(() => {somKnifesharpener.play()}, 300);
+
     clearTimeout(this.to);
     this.setMatriz(matrizPersonagem[0]);
     this.to = setTimeout(() => {
